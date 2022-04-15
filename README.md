@@ -1,3 +1,4 @@
+# NOTE: THIS README IS OUTDATED! Working on an update
 # Video of all features
 https://user-images.githubusercontent.com/71658949/158147979-1f047cd0-d167-49fc-b9db-04f0da01cd93.mp4
 
