@@ -1,0 +1,29 @@
+import sys
+import json
+import os
+import anilist_requests
+
+file_path = sys.argv[1]
+file_name = file_path.split('/')[-1]
+folder_path = file_path[:file_path.rfind('/')]
+
+with open(os.path.join(sys.path[0], 'map.json')) as f:
+    folder_map = json.load(f)
+
+def get_progress(mediaId):
+    return anilist_requests.get_progress(mediaId)
+
+def update_progress(mediaId, progress):
+    print(file_name)
+    watched_episode = int(file_name.split('.')[0].split(' ')[1])
+    print(watched_episode)
+    if watched_episode <= progress:
+        quit()
+    anilist_requests.update_progress(mediaId, watched_episode)
+
+for folder in folder_map:
+    if folder_path == folder:
+        mediaId = folder_map[folder]["anilist_id"]
+        progress = get_progress(mediaId)
+        update_progress(mediaId, progress)
+        break
