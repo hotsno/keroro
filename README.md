@@ -1,5 +1,5 @@
-# Video of all features
-https://user-images.githubusercontent.com/71658949/158147979-1f047cd0-d167-49fc-b9db-04f0da01cd93.mp4
+# Setup video
+https://cdn.discordapp.com/attachments/708155390621122650/965348522176180274/2022-04-17_13-27-02.mp4
 
 
 # Features
