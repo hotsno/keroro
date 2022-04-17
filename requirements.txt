@@ -1,5 +1,2 @@
-os
-json
-sys
 colorama
 requests
