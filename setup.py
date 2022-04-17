@@ -1,7 +1,7 @@
 import json
 import sys
 import os
-from colorama import Fore, Back, Style, init
+from colorama import Fore, Style
 
 download_folder = input(f'{Fore.GREEN}Download folder{Style.RESET_ALL} path: ')
 anime_folder = input(f'{Fore.GREEN}Anime folder{Style.RESET_ALL} path: ')

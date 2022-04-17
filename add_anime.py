@@ -1,9 +1,9 @@
 import os
-import search
-import mapper
 import json
 import sys
-from colorama import Fore, Back, Style, init
+from colorama import Fore, Style, init
+import search
+import mapper
 
 def get_download_folder():
     with open(os.path.join(sys.path[0], 'config.json')) as f:

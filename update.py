@@ -14,9 +14,7 @@ def get_progress(mediaId):
     return anilist_requests.get_progress(mediaId)
 
 def update_progress(mediaId, progress):
-    print(file_name)
     watched_episode = int(file_name.split('.')[0].split(' ')[1])
-    print(watched_episode)
     if watched_episode <= progress:
         quit()
     anilist_requests.update_progress(mediaId, watched_episode)

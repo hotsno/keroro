@@ -1,5 +1,5 @@
+from colorama import Fore, Style
 import anilist_requests
-from colorama import Fore, Back, Style, init
 
 def search(searchTerm, page):
     return anilist_requests.get_search_results(searchTerm, page)

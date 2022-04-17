@@ -1,8 +1,8 @@
-import anilist_requests
 import sys
 import json
 import os
-from colorama import Fore, Back, Style, init
+from colorama import Fore, Style
+import anilist_requests
 
 with open(os.path.join(sys.path[0], 'map.json')) as f:
     folder_map = json.load(f)
