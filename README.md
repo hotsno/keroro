@@ -11,6 +11,7 @@
 - File names need to follow a strict naming scheme
 - Not (yet) super user friendly, but should be manageable to set up with basic pretty coding skills
 - Current code is only tested to work with macOS, might work on Linux. Currently doesn't for Windows.
+- Anime needs to have "Watching" status in AniList for it to show on `continue.py`
 
 ## Planned improvements
 - Make it work on Linux and Windows
