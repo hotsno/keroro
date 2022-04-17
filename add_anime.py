@@ -78,6 +78,7 @@ def move(episodes, folder):
     for file in os.listdir(folder):   
         os.rename(f'{folder}/{file}', f'{dest_folder}/{file}')
     os.rmdir(folder)
+    return dest_folder
 
 if __name__ == "__main__":
     init() # For colorama
@@ -85,6 +86,6 @@ if __name__ == "__main__":
     selected_folder = folder_selection(downloads_folders)
     episodes = get_episodes(selected_folder)
     rename(episodes, selected_folder)
-    move(episodes, selected_folder)
+    dest_folder = move(episodes, selected_folder)
     anilist_id = search.get_anilist_id()
-    mapper.map_folder(selected_folder, anilist_id)
+    mapper.map_folder(dest_folder, anilist_id)
