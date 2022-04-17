@@ -22,18 +22,18 @@
 https://user-images.githubusercontent.com/71658949/163731187-be5c182a-4b0e-46e9-9f6f-a3599e9c1f1a.mp4
 
 1) `git clone https://github.com/hotsno/mpv-anilist` to copy all the files from this repo.
+2) Run and follow the instructions in `setup.py`
 3) Move the `anilist.lua` file inside the `scripts` folder to your [mpv scripts](https://mpv.io/manual/master/#script-location) folder.
 4) Edit the `"command"` variable in `anilist.lua` to match your setup's proper Python and `update.py` paths.
-5) Run and follow the instructions in `setup.py`
 6) You should be done!
 
 ## Usage
 ### Adding an anime (`add_anime.py`)
-Run `python3 add_anime.py` (may differ depending on OS). This is currently hardcoded to my setup so it will definetly not work out of the box. If you wanna look into the code to change it feel free, otherwise wait for an update.
+Run `python3 add_anime.py` (may differ depending on OS).
 ### Watch a mapped anime (`continue.py`)
-Run `python3 continue.py` (may differ depending on OS). Folders need to be mapped and files need to be named properly for it to work.
+Run `python3 continue.py` (may differ depending on OS).
 ### AniList updater mpv script
-As long as the folder your file is in is mapped (see below) and the file name follows the naming scheme (see below), this should work automatically once an episode reaches 80% played!
+As long as you've properly run `add_anime.py` on the anime you're watching, this should work automatically once an episode reaches 80% played!
 ### (Extra) Map unmapped folders (`mapper.py`)
 Run `python3 mapper.py` (may differ depending on OS)
 
