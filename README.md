@@ -13,7 +13,7 @@ https://user-images.githubusercontent.com/71658949/163731187-be5c182a-4b0e-46e9-
 3) Run `pip3 install -r requirements.txt`.
 4) Run `python3 setup.py` and follow the instructions.
 5) Move the `anilist.lua` file inside the `scripts` folder to your [mpv scripts](https://mpv.io/manual/master/#script-location) folder.
-6) Edit the `"command"` variable in `anilist.lua` to match your setup's proper Python and `update.py` paths.
+6) Edit the `command` variable in `anilist.lua` to match your setup's proper Python and `update.py` paths.
 7) You should be done!
 
 ## Usage
