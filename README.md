@@ -27,7 +27,7 @@ Run `python3 continue.py` (may differ depending on OS).
 ### AniList updater mpv script
 As long as you've properly run `add_anime.py` on the anime you're watching, this should work automatically once an episode reaches 80% played!
 ### (Extra) Map unmapped folders (`mapper.py`)
-If you anime in your anime folder which follows proper naming scheme, and isn't yet mapped to an AniList ID, you can map it. Run `python3 mapper.py` (may differ depending on OS).
+If you have anime in your anime folder which follows proper naming scheme, and isn't yet mapped to an AniList ID, you can map it. Run `python3 mapper.py` (may differ depending on OS).
 
 ## Naming scheme
 The scripts currently rely on a strict file naming scheme in order to be properly picked up. They must be named in the following format: `Episode 01.mkv`, where the episode number must always equal to the digit count of the highest episode.  
