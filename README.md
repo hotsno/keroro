@@ -42,4 +42,4 @@ Ex. If there are 12 episodes, each episode count must have 2 digits, so episodes
 ## Planned improvements
 - Make it work on Windows
 - Make installation more user friendly
-- ~~Remove the need for proprietary naming scheme by using [anitomy](https://github.com/erengy/anitomy)~~ Not planned unless I gain the time/motivation
+- ~~Remove the need for proprietary naming scheme by using [Anitomy](https://github.com/erengy/anitomy)~~ Not planned unless I gain the time/motivation
