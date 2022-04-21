@@ -1,11 +1,8 @@
-
-
 # mpv-anilist
-### This project contains:
 - mpv script to automatically mark episodes as watched on AniList when a file reaches 80% completion
-- Python script to open the next episode of a mapped anime in mpv
-- Python script to map folders to AniList IDs
-- Python script to rename your files to the proprietary naming scheme
+- Python script to "map" locally downloaded anime to an AniList ID
+- Python script to continue watching a mapped anime with mpv
+- Other helper scripts (check usage section for more details)
 
 ## Installation
 ### Video (commands differ by OS)
