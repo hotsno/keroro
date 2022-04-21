@@ -37,7 +37,6 @@ Ex. If there are 12 episodes, each episode count must have 2 digits, so episodes
 ## Limitations
 - File names need to follow a strict naming scheme
 - Current code is only tested to work with macOS, might work on Linux. Currently doesn't for Windows.
-- Anime needs to have "Watching" status in AniList for it to show on `continue.py`
 
 ## Planned improvements
 - Make it work on Windows
