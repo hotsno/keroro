@@ -30,7 +30,8 @@ As long as you've properly run `add_anime.py` on the anime you're watching, this
 If you anime in your anime folder which follows proper naming scheme, and isn't yet mapped to an AniList ID, you can map it. Run `python3 mapper.py` (may differ depending on OS).
 
 ## Naming scheme
-The scripts currently rely on a strict file naming scheme in order to be properly picked up. They must be named in the following format: `Episode 01.mkv`, where the episode number must always equal to the digit count of the highest episode. Ex. If there are 12 episodes, each episode count must have 2 digits, so episodes 1-9 must be padded with one 0 `(Episode 01.mkv - Episode 09.mkv)`.
+The scripts currently rely on a strict file naming scheme in order to be properly picked up. They must be named in the following format: `Episode 01.mkv`, where the episode number must always equal to the digit count of the highest episode.  
+Ex. If there are 12 episodes, each episode count must have 2 digits, so episodes 1-9 must be padded with one 0 `(Episode 01.mkv - Episode 09.mkv)`.
 
 ## Tips
 - If you use this regularly, I recommend adding an alias to `add_anime.py` and `continue.py` in your terminal so that you can quickly run these without typing the whole command out
