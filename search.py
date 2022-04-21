@@ -18,7 +18,7 @@ def get_anilist_id():
         print()
         x = 1
         for result in search_results:
-            print(f"[{x}] {result[0]}")
+            print(f"[{Fore.GREEN}{x}{Style.RESET_ALL}] {Fore.CYAN}{result[0]}{Style.RESET_ALL}")
             x += 1
         choice = input('\nEnter a number, or \'n\' for the next set of results: ')
         if choice == 'n':

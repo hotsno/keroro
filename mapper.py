@@ -1,6 +1,7 @@
 import os
 import json
 import sys
+from colorama import Fore, Style
 import anilist_requests
 import search
 
@@ -15,6 +16,7 @@ def save_map(folder_map):
 
 def remove_invalid_paths():
     folder_map = get_folder_map()
+
     temp = {}
     for folder in folder_map:
         if os.path.isdir(folder):
@@ -51,7 +53,7 @@ def map_folder_from_unmapped(unmapped_folders):
     print('\nSelect an unmapped folder:')
     i = 1
     for folder in unmapped_folders:
-        print(f'[{i}] {folder[29:]}')
+        print(f'[{Fore.GREEN}{i}{Style.RESET_ALL}] {Fore.CYAN}{folder[29:]}{Style.RESET_ALL}')
         i += 1
     folder_number = int(input('\n')) - 1
     folder = unmapped_folders[folder_number]
