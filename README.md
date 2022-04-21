@@ -27,10 +27,10 @@ Run `python3 continue.py` (may differ depending on OS).
 ### AniList updater mpv script
 As long as you've properly run `add_anime.py` on the anime you're watching, this should work automatically once an episode reaches 80% played!
 ### (Extra) Map unmapped folders (`mapper.py`)
-Run `python3 mapper.py` (may differ depending on OS)
+If you anime in your anime folder which follows proper naming scheme, and isn't yet mapped to an AniList ID, you can map it. Run `python3 mapper.py` (may differ depending on OS).
 
 ## Naming scheme
-The scripts currently rely on a strict file naming scheme in order to be properly picked up. They must be named in the following format: `Episode 01.mkv`, where the episode number must always equal to the digit count of the highest episode. Ex. if there are 12 episodes, each file must have 2 digits, 1-9 must be padded with one 0.
+The scripts currently rely on a strict file naming scheme in order to be properly picked up. They must be named in the following format: `Episode 01.mkv`, where the episode number must always equal to the digit count of the highest episode. Ex. If there are 12 episodes, each episode count must have 2 digits, so episodes 1-9 must be padded with one 0 `(Episode 01.mkv - Episode 09.mkv)`.
 
 ## Tips
 - If you use this regularly, I recommend adding an alias to `add_anime.py` and `continue.py` in your terminal so that you can quickly run these without typing the whole command out
@@ -43,4 +43,4 @@ The scripts currently rely on a strict file naming scheme in order to be properl
 ## Planned improvements
 - Make it work on Windows
 - Make installation more user friendly
-- ~~Remove the need for proprietary naming scheme by using [GuessIt](https://github.com/guessit-io/guessit)~~ Unfortunately, probably will not do this
+- ~~Remove the need for proprietary naming scheme by using [anitomy](https://github.com/erengy/anitomy)~~ Not planned unless I gain the time/motivation
