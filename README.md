@@ -34,7 +34,8 @@ The scripts currently rely on a strict file naming scheme in order to be properl
 Ex. If there are 12 episodes, each episode count must have 2 digits, so episodes 1-9 must be padded with one 0 `(Episode 01.mkv - Episode 09.mkv)`.
 
 ## Tips
-- If you use this regularly, I recommend adding an alias to `add_anime.py` and `continue.py` in your terminal so that you can quickly run these without typing the whole command out
+* If you use this regularly, I recommend adding an alias to `add_anime.py` and `continue.py` in your terminal so that you can quickly run these without typing the whole command out
+  - For example f you use `zsh` as your shell, you can add `alias add="python3 ~/mpv-anilist/add_anime.py"` and `alias a="python3 ~/mpv-anilist/continue.py"` to your `.zshrc` config file, modifying the commands accordingly. This example added aliases `add` and `a`.
 
 ## Limitations
 - File names need to follow a strict naming scheme
