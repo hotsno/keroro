@@ -1,7 +1,7 @@
 # mpv-anilist
-- mpv script to automatically mark episodes as watched on AniList when a file reaches 80% completion
 - Python script to "map" locally downloaded anime to an AniList ID
 - Python script to continue watching a mapped anime with mpv
+- mpv script to automatically mark episodes as watched on AniList when a file reaches 80% completion
 - Other helper scripts (check usage section for more details)
 
 ## Installation
