@@ -32,7 +32,7 @@ def get_watching_list():
     query = '''
     query ($userName: String) {
       Page(page: 1, perPage: 20) {
-        mediaList(userName: $userName, status: CURRENT, type: ANIME) {
+        mediaList(userName: $userName, status_in: [CURRENT, REPEATING], type: ANIME) {
           progress
           media {
             id
