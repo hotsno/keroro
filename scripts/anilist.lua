@@ -1,7 +1,7 @@
 function check_completion()
     pos = mp.get_property("percent-pos")
     if tonumber(pos) >= 80 then
-        command = "/path/to/python /path/to/update.py '" .. mp.get_property("path") .. "'"
+        command = "/path/to/python /path/to/update.py '" .. mp.get_property("path"):gsub("'", "'\\''") .. "'"
         os.execute(command)
         timer:stop()
     end

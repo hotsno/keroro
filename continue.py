@@ -36,12 +36,12 @@ def print_user_list(user_list):
     for anime in user_list:
         print(f'[{Fore.GREEN}{i}{Style.RESET_ALL}] {Fore.CYAN}{anime["title"]}{Style.RESET_ALL} - {Fore.YELLOW}Episode {int(anime["progress"]) + 1}{Style.RESET_ALL}')
         i += 1
-    print()
 
 def play_episode(episode_path):
     if not os.path.exists(episode_path):
         print(f"{Fore.RED}\n'{episode_path}' does not exist!")
         exit()
+    episode_path = episode_path.replace("'", "'\\''")
     os.system(f"mpv '{episode_path}' >/dev/null 2>&1 & disown")
 
 if __name__ == "__main__":
