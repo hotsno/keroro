@@ -1,6 +1,6 @@
-import requests
 import json
 import os
+import requests
 import sys
 
 def anilist_call(query, variables):
@@ -27,7 +27,7 @@ def get_watching_list():
         config = json.load(f)
     anilist_user = config["anilist_user"]
     variables = {
-        "userName": anilist_user 
+        "userName": anilist_user
     }
     query = '''
     query ($userName: String) {

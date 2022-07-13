@@ -1,9 +1,9 @@
-import os
-import json
-import sys
 from colorama import Fore, Style, init
-import search
+import json
 import mapper
+import os
+import search
+import sys
 
 def get_download_folder():
     with open(os.path.join(sys.path[0], 'config.json')) as f:
@@ -62,20 +62,19 @@ def rename(episodes, folder):
         os.rename(episode, f'Episode {cur_episode_str + old_ext}')
         cur_episode += 1
 
-def move(episodes, folder):
+def move(folder):
     anime_folder = get_anime_folder()
     anime_name = input(f'Enter anime name {Fore.CYAN}(blank to reuse folder name){Style.RESET_ALL}: ')
     if anime_name == '':
         anime_name = folder.split('/')[-1]
     season_number = input(f'Enter season number {Fore.CYAN}(blank for no season){Style.RESET_ALL}: ')
-    dest_folder = ''
     if season_number == '':
         dest_folder = f'{anime_folder}/{anime_name}'
     else:
         dest_folder = f'{anime_folder}/{anime_name}/Season {int(season_number)}'
     if not os.path.exists(dest_folder):
         os.makedirs(dest_folder)
-    for file in os.listdir(folder):   
+    for file in os.listdir(folder):
         os.rename(f'{folder}/{file}', f'{dest_folder}/{file}')
     os.rmdir(folder)
     return dest_folder
@@ -86,6 +85,6 @@ if __name__ == "__main__":
     selected_folder = folder_selection(downloads_folders)
     episodes = get_episodes(selected_folder)
     rename(episodes, selected_folder)
-    dest_folder = move(episodes, selected_folder)
+    dest_folder = move(selected_folder)
     anilist_id = search.get_anilist_id()
     mapper.map_folder(dest_folder, anilist_id)

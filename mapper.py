@@ -1,9 +1,9 @@
-import os
-import json
-import sys
 from colorama import Fore, Style
 import anilist_requests
+import json
+import os
 import search
+import sys
 
 with open(os.path.join(sys.path[0], 'config.json')) as f:
     config = json.load(f)
@@ -48,18 +48,25 @@ def get_unmapped_folders(folders):
             unmapped_folders.append(folder)
     return unmapped_folders
 
-def map_folder_from_unmapped(unmapped_folders):
-    folder_map = get_folder_map()
-    print('\nSelect an unmapped folder:')
+def map_folder_from_unmapped(unmapped_folders, skippable):
     i = 1
     for folder in unmapped_folders:
         print(f'[{Fore.GREEN}{i}{Style.RESET_ALL}] {Fore.CYAN}{folder[29:]}{Style.RESET_ALL}')
         i += 1
-    folder_number = int(input('\n')) - 1
+    if skippable:
+        prompt = ("\nSelect a folder to map (type 's' to skip): ")
+    else:
+        prompt = ("\nSelect a folder to map (type 'q' to quit): ")
+    user_input = input(prompt)
+    if user_input in ["q", "s"]:
+        return []
+    folder_number = int(user_input) - 1
     folder = unmapped_folders[folder_number]
     anilist_id = search.get_anilist_id()
     map_folder(folder, anilist_id)
     del unmapped_folders[folder_number]
+    if len(unmapped_folders == 0):
+        print('\nAll your folders are mapped!')
     return unmapped_folders
 
 def map_folder(folder, anilist_id):
@@ -79,12 +86,13 @@ def get_folder_map():
         folder_map = json.load(f)
     return folder_map
 
-if __name__ == "__main__":
+def map(skippable):
     remove_invalid_paths()
     leaf_folders = get_leaf_folders()
     unmapped_folders = get_unmapped_folders(leaf_folders)
     while len(unmapped_folders) != 0:
-        unmapped_folders = map_folder_from_unmapped(unmapped_folders)
-    print('\nAll your folders are mapped!')
-    quit()
+        unmapped_folders = map_folder_from_unmapped(unmapped_folders, skippable)
 
+if __name__ == "__main__":
+    map(False)
+    quit()
