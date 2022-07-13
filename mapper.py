@@ -65,7 +65,7 @@ def map_folder_from_unmapped(unmapped_folders, skippable):
     anilist_id = search.get_anilist_id()
     map_folder(folder, anilist_id)
     del unmapped_folders[folder_number]
-    if len(unmapped_folders == 0):
+    if len(unmapped_folders) == 0:
         print('\nAll your folders are mapped!')
     return unmapped_folders
 
