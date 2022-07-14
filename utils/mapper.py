@@ -12,7 +12,7 @@ def get_config():
         return config
 
 def save_map(folder_map):
-    with open(os.path.join(sys.path[0], 'map.json'), 'r+') as f:
+    with open(os.path.join(sys.path[0], 'map.json'), 'w') as f:
         f.seek(0)
         json.dump(folder_map, f, indent = 4)
         f.truncate()
@@ -85,8 +85,11 @@ def map_folder(folder, anilist_id):
     print(f'\nMapped to AniList ID {anilist_id}')
 
 def get_folder_map():
-    with open(os.path.join(sys.path[0], 'map.json')) as f:
-        folder_map = json.load(f)
+    try:
+        with open(os.path.join(sys.path[0], 'map.json')) as f:
+            folder_map = json.load(f)
+    except:
+        folder_map = {}
     return folder_map
 
 def map(skippable):

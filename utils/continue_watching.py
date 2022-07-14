@@ -4,12 +4,11 @@ import os
 import sys
 
 from . import anilist_requests
-
-with open(os.path.join(sys.path[0], 'map.json')) as f:
-    folder_map = json.load(f)
+from . import mapper
 
 def get_available_list(watchlist):
     user_list = []
+    folder_map = mapper.get_folder_map()
     for folder in folder_map:
         if not os.path.isdir(folder):
             continue
