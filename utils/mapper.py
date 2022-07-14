@@ -1,12 +1,15 @@
 from colorama import Fore, Style
-import anilist_requests
 import json
 import os
-import search
 import sys
 
-with open(os.path.join(sys.path[0], 'config.json')) as f:
-    config = json.load(f)
+from . import anilist_requests
+from . import search
+
+def get_config():
+    with open(os.path.join(sys.path[0], 'config.json')) as f:
+        config = json.load(f)
+        return config
 
 def save_map(folder_map):
     with open(os.path.join(sys.path[0], 'map.json'), 'r+') as f:
@@ -26,7 +29,7 @@ def remove_invalid_paths():
 
 def get_leaf_folders():
     folders = []
-    stack = [config["anime_folder"]]
+    stack = [get_config()["anime_folder"]]
     while len(stack) != 0:
         cur = stack.pop()
         is_end = True

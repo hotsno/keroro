@@ -1,7 +1,8 @@
-import anilist_requests
 import json
 import os
 import sys
+
+from . import anilist_requests
 
 file_path = sys.argv[1]
 file_name = file_path.split('/')[-1]

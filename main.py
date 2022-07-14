@@ -1,7 +1,7 @@
-import config
-import mapper
-import continue_watching
+import utils.config
+import utils.mapper
+import utils.continue_watching
 
-config.set_up()
-mapper.map(True)
-continue_watching.continue_watching()
+utils.config.set_up()
+utils.mapper.map(True)
+utils.continue_watching.continue_watching()

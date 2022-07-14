@@ -4,7 +4,6 @@ import sys
 import os
 import subprocess
 
-
 def is_set_up():
     if os.path.exists(os.path.join(sys.path[0], 'config.json')):
         return True
