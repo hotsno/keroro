@@ -4,14 +4,12 @@
 - `anilist.lua` mpv script automatically marks episode as watched on AniList when it reaches 80% watch completion
 
 ## Installation
-### Video (out of date)
-https://user-images.githubusercontent.com/71658949/163731187-be5c182a-4b0e-46e9-9f6f-a3599e9c1f1a.mp4
 
 ### Pre-requisites
 - Git
 - Python 3.x
 
-### Step-by-step Instructions
+### Step-by-step instructions
 <details>
 <summary>Windows</summary>
 <br>
@@ -58,7 +56,7 @@ Anime should be kept in folders that can correctly correspond to an AniList entr
 ## Help and Reporting Bugs
 Please feel free to open an issue if you have any questions or bugs to report!
 
-## Planned improvements
+## Planned Improvements
 - Remove the need for proprietary naming scheme by using [Anitomy](https://github.com/erengy/anitomy)
 - ~~Make it work on Windows~~
 - ~~Make installation more user friendly~~
