@@ -1,6 +1,6 @@
 # mpv-anilist
 - Map locally downloaded anime to an AniList ID
-- Continue watching (based off AniList episode status) a mapped anime with mpv
+- Continue watching (based off AniList episode status) with mpv
 - `anilist.lua` mpv script automatically marks episode as watched on AniList when it reaches 80% watch completion
 
 ## Installation
