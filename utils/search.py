@@ -2,9 +2,6 @@ from colorama import Fore, Style
 
 from . import anilist_requests
 
-def search(searchTerm, page):
-    return anilist_requests.get_search_results(searchTerm, page)
-
 def get_anilist_id():
     search_term = input(f"\nEnter a {Fore.GREEN}search term {Style.RESET_ALL}or{Fore.GREEN} 'm'{Style.RESET_ALL} to manually enter ID {Fore.CYAN}(blank to skip mapping){Style.RESET_ALL}: ")
     if search_term == '':
@@ -27,3 +24,5 @@ def get_anilist_id():
         else:
             return search_results[int(choice) - 1][1]
             
+def search(searchTerm, page):
+    return anilist_requests.get_search_results(searchTerm, page)

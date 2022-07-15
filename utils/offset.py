@@ -3,8 +3,8 @@ from colorama import Fore, Style
 from . import mapper
 from . import config
 
-def offset():
-    folder_map = mapper.get_folder_map()
+def create_offset():
+    folder_map = mapper.get_map()
     if len(folder_map) == 0:
         print("You currently have no mapped folders!")
         return

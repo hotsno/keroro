@@ -1,17 +1,13 @@
-from ctypes import util
-import json
 import os
 import sys
 
 import utils.anilist_requests
 import utils.config
+import utils.mapper
 
 file_path = sys.argv[1]
 (folder_path, file_name) = os.path.split(file_path)
-
-with open(os.path.join(sys.path[0], 'map.json')) as f:
-    folder_map = json.load(f)
-
+folder_map = utils.mapper.get_map()
 offset = 0
 if "offset" in folder_map[folder_path]:
     offset = folder_map[folder_path]["offset"]
