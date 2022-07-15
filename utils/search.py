@@ -26,3 +26,4 @@ def get_anilist_id():
             page += 1
         else:
             return search_results[int(choice) - 1][1]
+            

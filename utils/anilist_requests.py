@@ -1,7 +1,6 @@
-import json
-import os
 import requests
-import sys
+
+from . import config
 
 def anilist_call(query, variables):
     url = 'https://graphql.anilist.co'
@@ -12,20 +11,18 @@ def anilist_call(query, variables):
     return response.json()
 
 def anilist_call_mutate(query, variables):
-    with open(os.path.join(sys.path[0], 'config.json')) as f:
-        config = json.load(f)
+    config_dict = config.get_config()
     url = 'https://graphql.anilist.co'
     response = requests.post(
         url,
-        headers = {'Authorization': 'Bearer ' + config["token"], 'Content-Type': 'application/json', 'Accept': 'application/json'},
+        headers = {'Authorization': 'Bearer ' + config_dict["token"], 'Content-Type': 'application/json', 'Accept': 'application/json'},
         json = {'query': query, 'variables': variables}
     )
     return response.json()
 
 def get_watching_list():
-    with open(os.path.join(sys.path[0], 'config.json')) as f:
-        config = json.load(f)
-    anilist_user = config["anilist_user"]
+    config_dict = config.get_config()
+    anilist_user = config_dict["anilist_user"]
     variables = {
         "userName": anilist_user
     }
@@ -94,10 +91,9 @@ def update_progress(mediaId, progress):
     anilist_call_mutate(query, variables)
 
 def get_progress(mediaId):
-    with open(os.path.join(sys.path[0], 'config.json')) as f:
-        config = json.load(f)
+    config_dict = config.get_config()   
     variables = {
-        "userName": config["anilist_user"],
+        "userName": config_dict["anilist_user"],
         "mediaId": mediaId
     }
     query = '''

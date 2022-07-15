@@ -1,3 +1,4 @@
+import pathlib
 from colorama import Fore, Style
 import json
 import sys
@@ -12,17 +13,15 @@ def is_set_up():
 def set_up():
     if is_set_up():
         return
-
+    update_lua_script()
     anime_folder = input(f'Anime folder path: ')
     anilist_user = input(f'AniList username: ')
     mpv_path = get_mpv_path()
-    python_path = sys.executable
 
     config = {
         "anime_folder": anime_folder,
         "anilist_user": anilist_user,
         "mpv_path": mpv_path,
-        "python_path": python_path,
         "token": ""
     }
 
@@ -50,3 +49,16 @@ def get_mpv_path():
         mpv_path = input(f"\nPath to mpv ({example}): ")
     return mpv_path
 
+def get_config():
+    with open(os.path.join(sys.path[0], 'config.json')) as f:
+        config = json.load(f)
+        return config
+
+def update_lua_script():
+    update_path = os.path.join(sys.path[0], "update.py")
+    python_path = sys.executable
+    to_prepend = f'local python_path = "{python_path}"\nlocal update_path = "{update_path}"\n'
+    with open(os.path.join(sys.path[0], "mpv", "scripts", "anilist.lua"), 'r+') as f:
+        content = f.read()
+        f.seek(0, 0)
+        f.write(to_prepend + '\n' + content)

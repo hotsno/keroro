@@ -5,11 +5,7 @@ import sys
 
 from . import anilist_requests
 from . import search
-
-def get_config():
-    with open(os.path.join(sys.path[0], 'config.json')) as f:
-        config = json.load(f)
-        return config
+from . import config
 
 def save_map(folder_map):
     with open(os.path.join(sys.path[0], 'map.json'), 'w') as f:
@@ -29,7 +25,7 @@ def remove_invalid_paths():
 
 def get_leaf_folders():
     folders = []
-    stack = [get_config()["anime_folder"]]
+    stack = [config.get_config()["anime_folder"]]
     while len(stack) != 0:
         cur = stack.pop()
         is_end = True
@@ -54,12 +50,13 @@ def get_unmapped_folders(folders):
 def map_folder_from_unmapped(unmapped_folders, skippable):
     i = 1
     for folder in unmapped_folders:
-        print(f'[{Fore.GREEN}{i}{Style.RESET_ALL}] {Fore.CYAN}{folder[29:]}{Style.RESET_ALL}')
+        anime_folder_len = len(config.get_config()["anime_folder"])
+        print(f'[{Fore.GREEN}{i}{Style.RESET_ALL}] {Fore.CYAN}{folder[anime_folder_len + 1:]}{Style.RESET_ALL}')
         i += 1
     if skippable:
-        prompt = ("\nSelect a folder to map (type 's' to skip): ")
+        prompt = "\nSelect a folder to map (type 's' to skip): "
     else:
-        prompt = ("\nSelect a folder to map (type 'q' to quit): ")
+        prompt = "\nSelect a folder to map (type 'q' to quit): "
     user_input = input(prompt)
     if user_input in ["q", "s"]:
         return []
