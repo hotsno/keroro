@@ -5,6 +5,7 @@ import os
 from . import anilist_requests
 from . import mapper
 from . import offset
+from . import config
 
 g = Fore.GREEN
 re = Style.RESET_ALL
@@ -61,7 +62,8 @@ def play_episode(episode_path):
     if not os.path.exists(episode_path):
         print(f"{Fore.RED}\n'{episode_path}' does not exist!")
         exit()
-    subprocess.Popen(["mpv", episode_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    mpv_path = config.get_config()["mpv_path"]
+    subprocess.Popen([mpv_path, episode_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     quit()
 
 def more_options():
