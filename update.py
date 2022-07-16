@@ -9,6 +9,9 @@ file_path = sys.argv[1]
 (folder_path, file_name) = os.path.split(file_path)
 folder_map = utils.mapper.get_map()
 offset = 0
+print(folder_map)
+print(folder_path)
+print(file_name)
 if "offset" in folder_map[folder_path]:
     offset = folder_map[folder_path]["offset"]
 
