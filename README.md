@@ -3,6 +3,9 @@
 - Continue watching (based off AniList episode status) with mpv
 - `anilist.lua` mpv script automatically marks episode as watched on AniList when it reaches 80% watch completion
 
+<img width="932" alt="image" src="https://user-images.githubusercontent.com/71658949/192674357-e9939bab-ae03-4411-b7f5-b58e040f14e9.png">
+
+
 ## Installation
 
 ### Pre-requisites
