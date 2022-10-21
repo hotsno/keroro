@@ -54,7 +54,7 @@ def update_lua_script():
     update_path = os.path.join(sys.path[0], "update.py")
     python_path = sys.executable
     to_prepend = f'local python_path = "{python_path}"\nlocal update_path = "{update_path}"\n'
-    with open(os.path.join(sys.path[0], "mpv", "scripts", "anilist.lua"), 'r+') as f:
+    with open(os.path.join(sys.path[0], "anilist.lua"), 'r+') as f:
         content = f.read()
         f.seek(0, 0)
         f.write(to_prepend + '\n' + content)
