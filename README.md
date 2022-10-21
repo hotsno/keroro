@@ -8,7 +8,7 @@
 
 ## Installation
 
-### Pre-requisites
+### Requirements
 - Git
 - Python 3.x
 
@@ -48,18 +48,18 @@
 </details>
 
 ## Usage
-Run `main.py` and if everything goes right, things *should* be self-explanatory.  
+Run `main.py` and things *should* be self-explanatory. The first time you run, it'll walk you through configuring everything.  
   
 Anime should be kept in folders that can correctly correspond to an AniList entry (e.g. if separate AL entries exist for each season, each season should have its own folder). Episode detection is done solely by the file's position alphabetically within the folder. Offsets can be added in the case that you are missing some of the early episodes.
 
 ## Tips
-* If you use this regularly, I recommend adding an alias to `main.py` in your terminal so that you can quickly run these without typing the whole command out
-  - If you use `zsh`, you can add `alias a="python3 ~/mpv-anilist/main.py"` to your `.zshrc` config file, modifying the line according to your own setup.
+* Look into creating an alias for running `main.py`. For example, if you use zsh you can [add an alias](https://linuxhint.com/configure-use-aliases-zsh/) in your `~/.zshrc` file.
 
-## Help and Reporting Bugs
-Please feel free to open an issue if you have any questions or bugs to report!
+## Help, suggestions, and bug reports
+Please feel free to open a GitHub issue if you have any suggestions, bugs to report, or need help!
 
-## Planned Improvements
-- Remove the need for proprietary naming scheme by using [Anitomy](https://github.com/erengy/anitomy)
-- ~~Make it work on Windows~~
-- ~~Make installation more user friendly~~
+## Planned improvements
+- [ ] Remove the need for proprietary naming scheme by using [Anitomy](https://github.com/erengy/anitomy)
+- [ ] Improve aesthetics/UI
+- [ ] Make it work on Windows
+- [x] Make installation more user friendly
