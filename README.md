@@ -48,7 +48,7 @@
 </details>
 
 ## Usage
-Run `main.py` and things *should* be self-explanatory. The first time you run, it'll walk you through configuring everything.  
+Run `main.py`. The first time you run, it'll walk you through configuring everything.  
   
 Anime should be kept in folders that can correctly correspond to an AniList entry (e.g. if separate AL entries exist for each season, each season should have its own folder). Episode detection is done solely by the file's position alphabetically within the folder. Offsets can be added in the case that you are missing some of the early episodes.
 
