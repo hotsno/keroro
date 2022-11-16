@@ -1,5 +1,5 @@
 import requests
-from . import config
+import utils.config
 
 def anilist_call(query, variables):
     url = 'https://graphql.anilist.co'
@@ -10,7 +10,7 @@ def anilist_call(query, variables):
     return response.json()
 
 def anilist_call_mutate(query, variables):
-    config_dict = config.get_config()
+    config_dict = utils.config.get_config()
     url = 'https://graphql.anilist.co'
     response = requests.post(
         url,
@@ -20,7 +20,7 @@ def anilist_call_mutate(query, variables):
     return response.json()
 
 def get_watching_list():
-    config_dict = config.get_config()
+    config_dict = utils.config.get_config()
     anilist_user = config_dict["anilist_user"]
     variables = {
         "userName": anilist_user
@@ -90,7 +90,7 @@ def update_progress(mediaId, progress):
     anilist_call_mutate(query, variables)
 
 def get_progress(mediaId):
-    config_dict = config.get_config()   
+    config_dict = utils.config.get_config()   
     variables = {
         "userName": config_dict["anilist_user"],
         "mediaId": mediaId
