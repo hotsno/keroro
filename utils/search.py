@@ -1,5 +1,4 @@
 from colorama import Fore, Style
-
 from . import anilist_requests
 
 def get_anilist_id():

@@ -1,7 +1,4 @@
-import utils.config
-import utils.mapper
-import utils.continue_watching
-import colorama
+import utils.config, utils.mapper, utils.continue_watching, colorama
 
 colorama.init()
 

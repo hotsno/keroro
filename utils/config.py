@@ -1,8 +1,5 @@
+import json, sys, os, subprocess
 from colorama import Fore, Style
-import json
-import sys
-import os
-import subprocess
 
 g = Fore.GREEN
 r = Fore.RED

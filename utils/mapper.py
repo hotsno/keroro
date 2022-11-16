@@ -1,11 +1,6 @@
+import json, os, sys
 from colorama import Fore, Style
-import json
-import os
-import sys
-
-from . import anilist_requests
-from . import search
-from . import config
+from . import anilist_requests, search, config
 
 g = Fore.GREEN
 c = Fore.CYAN

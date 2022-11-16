@@ -1,7 +1,5 @@
 from colorama import Fore, Style
-
-from . import mapper
-from . import config
+from . import mapper, config
 
 def create_offset():
     folder_map = mapper.get_map()

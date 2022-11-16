@@ -1,11 +1,6 @@
-import subprocess
+import subprocess, os
 from colorama import Fore, Style
-import os
-
-from . import anilist_requests
-from . import mapper
-from . import offset
-from . import config
+from . import anilist_requests, mapper, offset, config
 
 g = Fore.GREEN
 re = Style.RESET_ALL

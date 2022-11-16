@@ -1,5 +1,4 @@
 import requests
-
 from . import config
 
 def anilist_call(query, variables):
