@@ -22,7 +22,7 @@ def set_up():
     print(colored_text([
         [None, '\nPlease manually enter your '],
         [GREEN, "'token' "],
-        [None, 'into ']
+        [None, 'into '],
         [GREEN, "'config.json'\n"],
         [None, 'To get your token, visit '],
         [GREEN, 'https://anilist.co/api/v2/oauth/authorize?client_id=7723&response_type=token']
