@@ -1,6 +1,6 @@
 import json, os, sys
 import utils.anilist_requests, utils.search, utils.config
-from colorama import Fore, Style
+from utils.common import colored_text, GREEN, CYAN, RED
 
 def map():
     remove_invalid_paths()
@@ -44,20 +44,20 @@ def get_unmapped_folders(folders):
 
 def map_folder_from_unmapped(unmapped_folders):
 
-    print(colored_text([[Fore.GREEN, '\nUnmapped folders:']]))
+    print(colored_text([[GREEN, '\nUnmapped folders:']]))
     for i, folder in enumerate(unmapped_folders):
         anime_folder_len = len(utils.config.get_config()["anime_folder"])
         relative_folder_path = folder[anime_folder_len + 1:]
         print(colored_text([
             [None, '['],
-            [Fore.GREEN,  str(i + 1)],
+            [GREEN,  str(i + 1)],
             [None, '] '],
-            [Fore.CYAN,  relative_folder_path]
+            [CYAN,  relative_folder_path]
         ]))
     
     user_input = input(colored_text([
         [None, '\nSelect a folder to map (or '],
-        [Fore.GREEN, "'s' "],
+        [GREEN, "'s' "],
         [None, "to skip): "]
     ]))
     if user_input == 's':
@@ -68,7 +68,7 @@ def map_folder_from_unmapped(unmapped_folders):
         if not 0 <= folder_index < len(unmapped_folders):
             raise Exception
     except:
-        print(colored_text([[Fore.RED, '\nInvalid folder number!']]))
+        print(colored_text([[RED, '\nInvalid folder number!']]))
         map_folder_from_unmapped(unmapped_folders)
 
     anilist_id = utils.search.get_anilist_id()
@@ -80,7 +80,7 @@ def map_folder_from_unmapped(unmapped_folders):
 
     if len(unmapped_folders) == 0:
         print(colored_text([
-            [Fore.GREEN, '\nAll your folders are mapped!']
+            [GREEN, '\nAll your folders are mapped!']
         ]))
     
     return unmapped_folders
@@ -94,8 +94,8 @@ def map_folder(folder, anilist_id):
     }
     save_map(folder_map)
     print(colored_text([
-        [Fore.GREEN, 'Mapped to AniList ID '],
-        [Fore.BLUE, anilist_id]
+        [GREEN, 'Mapped to AniList ID '],
+        [CYAN, anilist_id]
     ]))
 
 def get_map():
@@ -114,11 +114,3 @@ def save_map(folder_map):
 
 if __name__ == "__main__":
     map()
-
-def colored_text(text_arr):
-    s = ""
-    for style, text in text_arr:
-        if not style:
-            style = Style.RESET_ALL
-        s += str(style) + str(text)
-    return s + Style.RESET_ALL
