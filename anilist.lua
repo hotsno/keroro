@@ -1,6 +1,3 @@
-local python_path = "/opt/homebrew/opt/python@3.10/bin/python3.10"
-local update_path = "/Users/hotsno/Developer/mpv-anilist/update.py"
-
 local function check_completion()
     local pos = mp.get_property("percent-pos")
     if tonumber(pos) >= 80 then
