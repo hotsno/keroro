@@ -1,5 +1,5 @@
-from colorama import Fore, Style
 import utils.mapper, utils.config
+from colorama import Fore, Style
 
 def create_offset():
     folder_map = utils.mapper.get_map()

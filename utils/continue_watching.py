@@ -1,6 +1,5 @@
 import subprocess, os
 import utils.anilist_requests, utils.mapper, utils.offset, utils.config
-from colorama import Fore, Style
 from utils.common import colored_text, GREEN, CYAN, YELLOW, RED
 
 def continue_watching():
