@@ -20,7 +20,7 @@ def set_up():
     save_config(config)
 
     print(colored_text([
-        [None, 'nPlease manually enter your '],
+        [None, '\nPlease manually enter your '],
         [GREEN, "'token' "],
         [None, 'into ']
         [GREEN, "'config.json'\n"],
