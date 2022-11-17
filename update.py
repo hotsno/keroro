@@ -17,7 +17,7 @@ def update_progress(mediaId, progress, offset):
 
 
 file_path = sys.argv[1]
-folder_path, file_name = os.path.split(file_path)
+(folder_path, file_name) = os.path.split(file_path)
 folder_map = utils.mapper.get_map()
 if folder_path not in folder_map:
     quit()
