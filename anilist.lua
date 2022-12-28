@@ -18,9 +18,9 @@ local function start_presence()
 end
 
 local function stop_presence()
-	mp.abort_async_command(cmd)
-	cmd = nil
-	mp.osd_message("Discord RPC: Stopped")
+    mp.abort_async_command(cmd)
+    cmd = nil
+    mp.osd_message("Discord RPC: Stopped")
 end
 
 local function update_presence(pos)
@@ -49,7 +49,7 @@ mp.register_event("start-file", function()
 end)
 
 mp.register_event("shutdown", function()
-	if cmd ~= nil then
-		stop_presence()
-	end
+    if cmd ~= nil then
+        stop_presence()
+    end
 end)
