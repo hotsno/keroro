@@ -22,5 +22,5 @@ def get_episode_number(file_path, folder_map):
     offset = 0
     if 'offset' in folder_map[folder_path]:
         offset = folder_map[folder_path]['offset']
-    sorted_file_names = [item for item in sorted(os.listdir(folder_path)) if not item.startswith('.')]
+    sorted_file_names = [file for file in sorted(os.listdir(folder_path)) if not file.startswith('.')]
     return sorted_file_names.index(file_name) + 1 + offset

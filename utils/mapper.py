@@ -6,47 +6,38 @@ def map():
     remove_invalid_paths()
     leaf_folders = get_leaf_folders()
     unmapped_folders = get_unmapped_folders(leaf_folders)
-    while len(unmapped_folders) != 0:
-        unmapped_folders = map_folder_from_unmapped(unmapped_folders)
+    while unmapped_folders:
+        map_folder_from_unmapped(unmapped_folders)
 
 def remove_invalid_paths():
-    folder_map = get_map()
-    temp = {}
-    for folder in folder_map:
-        if os.path.isdir(folder):
-            temp[folder] = folder_map[folder]
-    folder_map = temp
-    save_map(folder_map)
+    old_folder_map = get_map()
+    new_folder_map = {k: v for k, v in old_folder_map.items() if os.path.isdir(k)}
+    save_map(new_folder_map)
 
 def get_leaf_folders():
-    folders = []
-    stack = [utils.config.get_config()["anime_folder"]]
-    while len(stack) != 0:
+    leaf_folders = []
+    anime_folder = utils.config.get_config()['anime_folder']
+    stack = [anime_folder]
+    while stack:
         cur = stack.pop()
-        is_end = True
+        is_leaf = True
         for file in sorted(os.listdir(cur)):
-            d = os.path.join(cur, file)
-            if file.startswith('.') or not os.path.isdir(d):
-                continue
-            stack.append(d)
-            is_end = False
-        if is_end:
-            folders.append(cur)
-    return folders
+            path = os.path.join(cur, file)
+            if os.path.isdir(path) and not file.startswith('.'):
+                stack.append(path)
+                is_leaf = False
+        if is_leaf and cur != anime_folder:
+            leaf_folders.append(cur)
+    return leaf_folders
 
 def get_unmapped_folders(folders):
     folder_map = get_map()
-    unmapped_folders = []
-    for folder in folders:
-        if folder not in folder_map:
-            unmapped_folders.append(folder)
-    return unmapped_folders
+    return [folder for folder in folders if folder not in folder_map]
 
 def map_folder_from_unmapped(unmapped_folders):
-
     print(colored_text([[GREEN, '\nUnmapped folders:']]))
     for i, folder in enumerate(unmapped_folders):
-        anime_folder_len = len(utils.config.get_config()["anime_folder"])
+        anime_folder_len = len(utils.config.get_config()['anime_folder'])
         relative_folder_path = folder[anime_folder_len + 1:]
         print(colored_text([
             [None, '['],
@@ -58,10 +49,11 @@ def map_folder_from_unmapped(unmapped_folders):
     user_input = input(colored_text([
         [None, '\nSelect a folder to map (or '],
         [GREEN, "'s' "],
-        [None, "to skip): "]
+        [None, 'to skip): ']
     ]))
     if user_input == 's':
-        return []
+        unmapped_folders = []
+        return
     
     try:
         folder_index = int(user_input) - 1
@@ -72,25 +64,22 @@ def map_folder_from_unmapped(unmapped_folders):
         map_folder_from_unmapped(unmapped_folders)
 
     anilist_id = utils.search.get_anilist_id()
-    if not anilist_id:
-        return []
+    if not anilist_id: # User aborted mapping
+        unmapped_folders = []
+        return
 
     map_folder(unmapped_folders[folder_index], anilist_id)
     del unmapped_folders[folder_index]
 
-    if len(unmapped_folders) == 0:
-        print(colored_text([
-            [GREEN, '\nAll your folders are mapped!']
-        ]))
-    
-    return unmapped_folders
+    if not unmapped_folders:
+        print(colored_text([[GREEN, '\nAll your folders are mapped!']]))
 
 def map_folder(folder, anilist_id):
     anime_details = utils.anilist_requests.get_anime_details(anilist_id)
     folder_map = get_map()
     folder_map[folder] = {
-        "anilist_id": anilist_id,
-        "title": anime_details['Media']['title']['romaji'],
+        'anilist_id': anilist_id,
+        'title': anime_details['Media']['title']['romaji'],
         'link': anime_details['Media']['siteUrl'],
         'poster': anime_details['Media']['coverImage']['medium']
     }
@@ -114,5 +103,5 @@ def save_map(folder_map):
         json.dump(folder_map, f, indent = 4)
         f.truncate()
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     map()

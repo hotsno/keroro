@@ -3,12 +3,11 @@ import utils.anilist_requests, utils.mapper, utils.offset, utils.config
 from utils.common import colored_text, GREEN, CYAN, YELLOW, RED
 
 def continue_watching():
-
     watching_list = utils.anilist_requests.get_watching_list()
     available_list = get_available_list(watching_list)
     if not available_list:
-        print('\nYou have nothing to watch! (or AniList status isn\'t "WATCHING")')
-        quit()
+        print('\nNo valid items found!')
+        more_options()
     
     print()
     for i, anime in enumerate(available_list):
