@@ -61,7 +61,7 @@ def map_folder_from_unmapped(unmapped_folders):
             raise Exception
     except:
         print(colored_text([[RED, '\nInvalid folder number!']]))
-        map_folder_from_unmapped(unmapped_folders)
+        return
 
     anilist_id = utils.search.get_anilist_id()
     if not anilist_id: # User aborted mapping
