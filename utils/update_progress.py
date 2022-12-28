@@ -1,4 +1,5 @@
 import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) # Add parent directory to sys path so we can import utils
 import utils.anilist_requests, utils.config, utils.mapper, utils.common
 
 def get_progress(mediaId):

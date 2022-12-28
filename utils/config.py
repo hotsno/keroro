@@ -57,7 +57,7 @@ def get_mpv_path():
 
 def update_lua_script():
     python_path = sys.executable
-    update_path = os.path.join(sys.path[0], 'update.py')
+    update_path = os.path.join(sys.path[0], 'utils', 'update_progress.py')
     update_presence_path = os.path.join(sys.path[0], 'presence', 'update_presence.py')
     run_presence_path = os.path.join(sys.path[0], 'presence', 'run_presence.py')
     to_prepend = f'local python_path = "{python_path}"\nlocal update_path = "{update_path}"\nlocal update_presence_path = "{update_presence_path}"\nlocal run_presence_path = "{run_presence_path}"\n'
