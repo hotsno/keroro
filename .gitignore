@@ -3,4 +3,4 @@ __pycache__
 .vscode
 map.json
 config.json
-test.py
+presence.json
