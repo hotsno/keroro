@@ -107,7 +107,7 @@ def get_progress(mediaId):
         raise ValueError(f'AniList ID {mediaId} is not on your AniList.')
     return result["data"]["MediaList"]["progress"]
 
-def get_title(anilist_id):
+def get_anime_details(anilist_id):
     variables = {
         "id": anilist_id
     }
@@ -116,9 +116,13 @@ def get_title(anilist_id):
       Media(id: $id) {
         title {
           romaji
+        },
+        siteUrl,
+        coverImage {
+          medium
         }
       }
     }
     '''
     result = anilist_call(query, variables)
-    return result["data"]["Media"]["title"]["romaji"]
+    return result["data"]

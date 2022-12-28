@@ -56,16 +56,18 @@ def get_mpv_path():
     return mpv_path
 
 def update_lua_script():
-    update_path = os.path.join(sys.path[0], "update.py")
     python_path = sys.executable
-    to_prepend = f'local python_path = "{python_path}"\nlocal update_path = "{update_path}"\n'
+    update_path = os.path.join(sys.path[0], 'update.py')
+    update_presence_path = os.path.join(sys.path[0], 'presence', 'update_presence.py')
+    run_presence_path = os.path.join(sys.path[0], 'presence', 'run_presence.py')
+    to_prepend = f'local python_path = "{python_path}"\nlocal update_path = "{update_path}"\nlocal update_presence_path = "{update_presence_path}"\nlocal run_presence_path = "{run_presence_path}"\n'
     with open(os.path.join(sys.path[0], 'anilist.lua'), 'r+') as f:
         content = f.read()
         f.seek(0, 0)
         f.write(to_prepend + '\n' + content)
 
 def get_config():
-    with open(os.path.join(sys.path[0], 'config.json')) as f:
+    with open(os.path.join(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'config.json')) as f:
         config = json.load(f)
         return config
 

@@ -1,3 +1,4 @@
+import os
 from colorama import Style, Fore
 
 GREEN = Fore.GREEN
@@ -13,3 +14,13 @@ def colored_text(text_arr):
             style = Style.RESET_ALL
         s += str(style) + str(text)
     return s + Style.RESET_ALL
+
+def get_episode_number(file_path, folder_map):
+    folder_path, file_name = os.path.split(file_path)
+    if folder_path not in folder_map:
+        quit()
+    offset = 0
+    if 'offset' in folder_map[folder_path]:
+        offset = folder_map[folder_path]['offset']
+    sorted_file_names = [item for item in sorted(os.listdir(folder_path)) if not item.startswith('.')]
+    return sorted_file_names.index(file_name) + 1 + offset

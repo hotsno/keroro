@@ -86,11 +86,13 @@ def map_folder_from_unmapped(unmapped_folders):
     return unmapped_folders
 
 def map_folder(folder, anilist_id):
-    title = utils.anilist_requests.get_title(anilist_id)
+    anime_details = utils.anilist_requests.get_anime_details(anilist_id)
     folder_map = get_map()
     folder_map[folder] = {
         "anilist_id": anilist_id,
-        "title": title
+        "title": anime_details['Media']['title']['romaji'],
+        'link': anime_details['Media']['siteUrl'],
+        'poster': anime_details['Media']['coverImage']['medium']
     }
     save_map(folder_map)
     print(colored_text([
@@ -100,7 +102,7 @@ def map_folder(folder, anilist_id):
 
 def get_map():
     try:
-        with open(os.path.join(sys.path[0], 'map.json')) as f:
+        with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'map.json')) as f:
             folder_map = json.load(f)
     except:
         folder_map = {}
