@@ -1,56 +1,50 @@
-local msg = require("mp.msg")
+local cmd = nil
+local complete = false
 
-local function check_completion()
-    local pos = mp.get_property("percent-pos")
-    mp.command_native_async({
-			name = "subprocess",
-			playback_only = false,
-			args = {
-				python_path,
-				update_presence_path,
-                mp.get_property("path"),
-                pos
-			},
-		}, function() end)
-    if tonumber(pos) >= 80 then
-        local command = python_path .. ' ' .. update_path .. ' "' .. mp.get_property("path") .. '"'
-        os.execute(command)
-        Timer:stop()
-    end
+local function start_process(args)
+    return mp.command_native_async({
+        name = "subprocess",
+        playback_only = false,
+        args = args
+    }, function() end)
 end
 
-local cmd = nil
-
 local function start_presence()
-	if cmd == nil then
-		cmd = mp.command_native_async({
-			name = "subprocess",
-			playback_only = false,
-			args = {
-				python_path,
-				run_presence_path
-			},
-		}, function() end)
-		msg.info("launched subprocess")
-		mp.osd_message("Discord Rich Presence: Started")
-	end
+    if cmd ~= nil then
+        return
+    end
+    cmd = start_process({python_path, run_presence_path})
+    mp.osd_message("Discord RPC: Started")
 end
 
 local function stop_presence()
 	mp.abort_async_command(cmd)
 	cmd = nil
-	msg.info("aborted subprocess")
-	mp.osd_message("Discord Rich Presence: Stopped")
+	mp.osd_message("Discord RPC: Stopped")
 end
 
-local function start_timer()
-    Timer:resume()
+local function update_presence(pos)
+    start_process({python_path, update_presence_path, mp.get_property("path"), pos})
 end
 
-Timer = mp.add_periodic_timer(1, check_completion)
+local function check_completion(pos)
+    if tonumber(pos) >= 80 then
+        start_process({python_path, update_path, mp.get_property("path")})
+        complete = true
+    end
+end
+
+Timer = mp.add_periodic_timer(5, function()
+    local pos = mp.get_property("percent-pos")
+    update_presence(pos)
+    if not complete then
+        check_completion(pos)
+    end
+end)
 
 mp.register_event("start-file", function()
-    start_timer()
+    complete = false
+    Timer:resume()
     start_presence()
 end)
 
