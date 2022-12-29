@@ -2,9 +2,44 @@ import subprocess, os
 import utils.anilist_requests, utils.mapper, utils.offset, utils.config
 from utils.common import colored_text, GREEN, CYAN, YELLOW, RED
 
+def sync_with_anilist():
+    watchlist = utils.anilist_requests.get_watching_list()
+    folder_map = utils.mapper.get_map()
+    for _, o in folder_map.items():
+        anilist_id = o['anilist_id']
+        if anilist_id in watchlist:
+            o['status'] = 'WATCHING'
+            anilist_progress = watchlist[anilist_id]['progress']
+            if 'progress' in o and o['progress'] > anilist_progress:
+                # TODO: Add colors to this (way too lazy to do this rn)
+                print(f'\nMismatched progress for {watchlist[anilist_id]["title"]}!\n')
+                keep = input(f'AniList progress: {anilist_progress}\nLocal progress: {o["progress"]}\n\nKeep local? [y/n] ') == 'y'
+                if not keep:
+                    o['progress'] = watchlist[anilist_id]['progress']
+            else:
+                o['progress'] = watchlist[anilist_id]['progress']
+        else:
+            o['status'] = 'UNKNOWN'
+    utils.mapper.save_map(folder_map)
+
+def check_local_progress(available_list):
+    folder_map = utils.mapper.get_map()
+    print(folder_map)
+    for _, v in folder_map.items():
+
+        print(available_list)
+        if 'local_progress' in v and v['local_progress'] > available_list[v['title']]['progress']:
+            print('ye')
+
 def continue_watching():
-    watching_list = utils.anilist_requests.get_watching_list()
-    available_list = get_available_list(watching_list)
+    try:
+        sync_with_anilist()
+    except:
+        print('\nCan\'t connect to AniList!')
+    # We do a little trolling
+    folder_map = utils.mapper.get_map()
+    available_list = [{**v, 'folder': k} for k, v in folder_map.items() if 'status' in v and v['status'] == 'WATCHING']
+    available_list = [i for i in available_list if get_episode_path(i['folder'], i['progress'] + 1)]
     if not available_list:
         print('\nNo valid items found!')
         more_options()
@@ -31,20 +66,6 @@ def continue_watching():
         print(colored_text([[RED, f'Episode not found! Check the folder below and add an episode offset if needed:\n{selected_anime_folder}']]))
         quit()
     play_episode(episode_path)
-
-def get_available_list(watchlist):
-    user_list = []
-    folder_map = utils.mapper.get_map()
-    for folder in folder_map:
-        if not os.path.isdir(folder):
-            continue
-        if folder_map[folder]['anilist_id'] in watchlist:
-            episode_progess = watchlist[folder_map[folder]['anilist_id']]['progress']
-            if not get_episode_path(folder, episode_progess + 1):
-                continue
-            watchlist[folder_map[folder]['anilist_id']]['folder'] = folder
-            user_list.append(watchlist[folder_map[folder]['anilist_id']])
-    return user_list
 
 def get_episode_path(selected_anime_folder, selected_anime_episode):
     episodes = []

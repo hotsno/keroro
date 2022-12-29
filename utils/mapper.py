@@ -98,7 +98,7 @@ def get_map():
     return folder_map
 
 def save_map(folder_map):
-    with open(os.path.join(sys.path[0], 'map.json'), 'w') as f:
+    with open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'map.json'), 'w') as f:
         f.seek(0)
         json.dump(folder_map, f, indent = 4)
         f.truncate()
