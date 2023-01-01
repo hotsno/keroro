@@ -36,10 +36,10 @@ def continue_watching():
         sync_with_anilist()
     except:
         print('\nCan\'t connect to AniList!')
-    # We do a little trolling
+
     folder_map = utils.mapper.get_map()
-    available_list = [{**v, 'folder': k} for k, v in folder_map.items() if 'status' in v and v['status'] == 'WATCHING']
-    available_list = [i for i in available_list if get_episode_path(i['folder'], i['progress'] + 1)]
+    # We do a little trolling
+    available_list = [{**v, 'folder': k} for k, v in folder_map.items() if 'status' in v and v['status'] == 'WATCHING' and get_episode_path(k, v['progress'] + 1)]
     if not available_list:
         print('\nNo valid items found!')
         more_options()
