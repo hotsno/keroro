@@ -7,5 +7,6 @@ try:
     utils.config.set_up()
     utils.mapper.map()
     utils.continue_watching.continue_watching()
-except KeyboardInterrupt: # If user uses Ctrl-C, don't error
+except KeyboardInterrupt:  # If user uses Ctrl-C, don't error
+    print()
     quit()
