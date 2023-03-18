@@ -65,7 +65,7 @@ def map_folder_from_unmapped(unmapped_folders):
 
     anilist_id = utils.search.get_anilist_id()
     if not anilist_id: # User aborted mapping
-        unmapped_folders = []
+        unmapped_folders.clear()
         return
 
     map_folder(unmapped_folders[folder_index], anilist_id)
