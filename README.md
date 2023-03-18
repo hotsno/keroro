@@ -30,7 +30,7 @@ Keroro is a CLI tool + [mpv](https://github.com/mpv-player/mpv) script that uses
 
 1) Open Command Prompt or Git Bash  
 2) `cd` into the directory where you'll be keeping this project
-3) Run `git clone https://github.com/hotsno/mpv-anilist`
+3) Run `git clone https://github.com/hotsno/keroro`
 4) Run `cd keroro`
 5) Run `pip install -r requirements.txt`
 6) Run `python main.py` and follow the instructions
@@ -47,7 +47,7 @@ Keroro is a CLI tool + [mpv](https://github.com/mpv-player/mpv) script that uses
 
 1) Open a terminal
 2) `cd` into the directory where you'll be keeping this project
-3) Run `git clone https://github.com/hotsno/mpv-anilist`
+3) Run `git clone https://github.com/hotsno/keroro`
 4) Run `cd keroro`
 5) Run `pip3 install -r requirements.txt`
 6) Run `python3 main.py` and follow the instructions
