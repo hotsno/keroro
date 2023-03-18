@@ -52,7 +52,7 @@ def map_folder_from_unmapped(unmapped_folders):
         [None, 'to skip): ']
     ]))
     if user_input == 's':
-        unmapped_folders = []
+        unmapped_folders.clear()
         return
     
     try:
