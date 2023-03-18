@@ -53,6 +53,10 @@ def get_mpv_path():
         else:
             example = 'ex. /usr/local/bin/mpv'
         mpv_path = input(f'\nPath to mpv ({example}): ')
+
+    if is_windows:
+        mpv_path = escape_windows_path(mpv_path)
+
     return mpv_path
 
 def update_lua_script():
@@ -60,6 +64,14 @@ def update_lua_script():
     update_path = os.path.join(sys.path[0], 'utils', 'update_progress.py')
     update_presence_path = os.path.join(sys.path[0], 'presence', 'update_presence.py')
     run_presence_path = os.path.join(sys.path[0], 'presence', 'run_presence.py')
+
+    is_windows = os.name == 'nt'
+    if is_windows:
+        python_path = escape_windows_path(python_path)
+        update_path = escape_windows_path(update_path)
+        update_presence_path = escape_windows_path(update_presence_path)
+        run_presence_path = escape_windows_path(run_presence_path)
+
     to_prepend = f'local python_path = "{python_path}"\nlocal update_path = "{update_path}"\nlocal update_presence_path = "{update_presence_path}"\nlocal run_presence_path = "{run_presence_path}"\n'
     with open(os.path.join(sys.path[0], 'anilist.lua'), 'r+') as f:
         content = f.read()
@@ -76,3 +88,16 @@ def save_config(config):
         f.seek(0)
         json.dump(config, f, indent=4)
         f.truncate()
+
+def escape_windows_path(path):
+    new_path = ""
+    i = 0
+    while i < len(path):
+        if path[i] == '\\':
+            new_path += '\\\\'
+            while i < len(path) - 1 and path[i + 1] == '\\':
+                i += 1
+        else:
+            new_path += path[i]
+        i += 1
+    return new_path
