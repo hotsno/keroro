@@ -37,7 +37,7 @@ Keroro is a CLI tool + [mpv](https://github.com/mpv-player/mpv) script that uses
 7) Map some anime, and begin watching!
 
 
-**NOTE:** The `mpv scripts` folder on Windows can be created in the same directory as `mpv.exe`. After creating the folder, copy `anilist.lua` into it.
+**NOTE:** The mpv `scripts` folder on Windows can be created in the same directory as `mpv.exe`. After creating the folder, copy `anilist.lua` into it.
 
 </details>
 
@@ -54,7 +54,7 @@ Keroro is a CLI tool + [mpv](https://github.com/mpv-player/mpv) script that uses
 7) Map some anime, and begin watching!
 
 
-**NOTE:** The `mpv scripts` folder on Linux/macOS can be created in the `~/.config/mpv` directory. After creating the folder, copy `anilist.lua` into it.
+**NOTE:** The mpv `scripts` folder on Linux/macOS can be created in the `~/.config/mpv` directory. After creating the folder, copy `anilist.lua` into it.
 
 </details>
 
