@@ -22,13 +22,17 @@ Keroro is a CLI tool + [mpv](https://github.com/mpv-player/mpv) script that uses
 ### Requirements
 - Git
 - Python (tested using 3.10.9)
+- mpv
 
 ### Step-by-step instructions
 <details>
 <summary>Windows</summary>
 <br>
 
-1) Open Command Prompt or Git Bash  
+If you are on Windows, I **highly** suggest you take a look at the [Taiga](https://taiga.moe/) project first. It most likely does what you want
+and more. The reason I created keroro was because I didn't like any of the alternatives for macOS and Linux.
+
+1) Open Terminal (or Command Prompt, Git Bash, or Windows Powershell)  
 2) `cd` into the directory where you'll be keeping this project
 3) Run `git clone https://github.com/hotsno/keroro`
 4) Run `cd keroro`
