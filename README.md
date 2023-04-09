@@ -67,10 +67,12 @@ Run `main.py`. The first time you run, it'll walk you through configuring everyt
   
 Anime should be kept in folders that can correctly correspond to an AniList entry (e.g. if separate AL entries exist for each season, each season should have its own folder or sub-folder). Episode detection is done solely by the file's position alphabetically within the folder. Offsets can be added in the case that you are missing some of the early episodes.  
 
+---
+
 In order for a mapped anime to show up in keroro, it must satisfy a few conditions:
 1) You must have properly mapped the anime. keroro will prompt you to do this when it detects a new folder within your anime folder.
-2) The AniList entry must be "Watching" status on your AniList.
-3) keroro must think that the "next" episodee is available to watch. For example, if you have only 1 file in a folder, and your episode status on AniList is 11, keroro will think that you only have ep 1 downloaded, and thus it can't play the next episode (episode 12). This can be resolved by having ALL of the episodes in the folder (in alphabetical order), OR by adding an offset with `m` then `o`. 
+2) The AniList entry must be of "Watching" status on your AniList.
+3) keroro must think that the next episode is available to watch. E.g., if you have only 1 file in a folder, and your episode status on AniList is 11, keroro will think that you only have ep 1 downloaded, and thus it can't play the next episode (episode 12). This can be resolved by having ALL of the episodes for that anime in the folder (in alphabetical order), OR by adding an offset with `m` then `o`. 
 
 ## Tips
 * Look into creating an alias for running `main.py`. For example, if you use zsh you can [add an alias](https://linuxhint.com/configure-use-aliases-zsh/) in your `~/.zshrc` file.
