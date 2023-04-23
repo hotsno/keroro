@@ -2,14 +2,6 @@ import requests
 import utils.config
 
 def anilist_call(query, variables):
-    url = 'https://graphql.anilist.co'
-    response = requests.post(
-        url,
-        json = {'query': query, 'variables': variables}
-    )
-    return response.json()
-
-def anilist_call_mutate(query, variables):
     config_dict = utils.config.get_config()
     url = 'https://graphql.anilist.co'
     response = requests.post(
@@ -87,7 +79,7 @@ def update_progress(mediaId, progress):
       }
     }
     '''
-    anilist_call_mutate(query, variables)
+    anilist_call(query, variables)
 
 def get_progress(mediaId):
     config_dict = utils.config.get_config()   
