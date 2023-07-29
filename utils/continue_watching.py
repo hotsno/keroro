@@ -16,6 +16,8 @@ def sync_with_anilist():
                 keep = input(f'AniList progress: {anilist_progress}\nLocal progress: {o["progress"]}\n\nKeep local? [y/n] ') == 'y'
                 if not keep:
                     o['progress'] = watchlist[anilist_id]['progress']
+                else:
+                    utils.anilist_requests.update_progress(anilist_id, o['progress'])
             else:
                 o['progress'] = watchlist[anilist_id]['progress']
         else:
@@ -54,7 +56,7 @@ def continue_watching():
             [None, ' - '],
             [YELLOW, f'Episode {int(anime["progress"]) + 1}']
         ]))
-    user_input = input("\nSelect an anime ('m' for more options): ")
+    user_input = input("\nSelect a show ('m' for more options): ")
     if user_input == 'm':
         more_options()
     
