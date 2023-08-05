@@ -14,7 +14,7 @@ Keroro is a CLI tool + [mpv](https://github.com/mpv-player/mpv) script that uses
 - Discord Rich Presence [(with posters!)](https://media.discordapp.net/attachments/826685810472124429/1058942983250120714/image.png)
 
 <p align="center">
-  <img width="932" alt="image" src="https://user-images.githubusercontent.com/71658949/210159831-17a98a13-2ef8-4483-bf38-f992654570c5.png">
+  <img width="932" alt="image" src="https://github.com/hotsno/keroro/assets/71658949/61a492b2-1e52-41ef-a81f-437d0f3a82a5">
 </p>
 
 ## Installation
